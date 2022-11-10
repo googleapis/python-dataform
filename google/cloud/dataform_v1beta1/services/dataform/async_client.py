@@ -16,7 +16,17 @@
 from collections import OrderedDict
 import functools
 import re
-from typing import Dict, Mapping, Optional, Sequence, Tuple, Type, Union
+from typing import (
+    Dict,
+    Mapping,
+    MutableMapping,
+    MutableSequence,
+    Optional,
+    Sequence,
+    Tuple,
+    Type,
+    Union,
+)
 import pkg_resources
 
 from google.api_core.client_options import ClientOptions
@@ -169,9 +179,9 @@ class DataformAsyncClient:
     def __init__(
         self,
         *,
-        credentials: ga_credentials.Credentials = None,
+        credentials: Optional[ga_credentials.Credentials] = None,
         transport: Union[str, DataformTransport] = "grpc_asyncio",
-        client_options: ClientOptions = None,
+        client_options: Optional[ClientOptions] = None,
         client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
     ) -> None:
         """Instantiates the dataform client.
@@ -215,11 +225,11 @@ class DataformAsyncClient:
 
     async def list_repositories(
         self,
-        request: Union[dataform.ListRepositoriesRequest, dict] = None,
+        request: Optional[Union[dataform.ListRepositoriesRequest, dict]] = None,
         *,
-        parent: str = None,
+        parent: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.ListRepositoriesAsyncPager:
         r"""Lists Repositories in a given project and location.
@@ -252,7 +262,7 @@ class DataformAsyncClient:
                     print(response)
 
         Args:
-            request (Union[google.cloud.dataform_v1beta1.types.ListRepositoriesRequest, dict]):
+            request (Optional[Union[google.cloud.dataform_v1beta1.types.ListRepositoriesRequest, dict]]):
                 The request object. `ListRepositories` request message.
             parent (:class:`str`):
                 Required. The location in which to list repositories.
@@ -328,11 +338,11 @@ class DataformAsyncClient:
 
     async def get_repository(
         self,
-        request: Union[dataform.GetRepositoryRequest, dict] = None,
+        request: Optional[Union[dataform.GetRepositoryRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> dataform.Repository:
         r"""Fetches a single Repository.
@@ -364,7 +374,7 @@ class DataformAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.dataform_v1beta1.types.GetRepositoryRequest, dict]):
+            request (Optional[Union[google.cloud.dataform_v1beta1.types.GetRepositoryRequest, dict]]):
                 The request object. `GetRepository` request message.
             name (:class:`str`):
                 Required. The repository's name.
@@ -425,13 +435,13 @@ class DataformAsyncClient:
 
     async def create_repository(
         self,
-        request: Union[dataform.CreateRepositoryRequest, dict] = None,
+        request: Optional[Union[dataform.CreateRepositoryRequest, dict]] = None,
         *,
-        parent: str = None,
-        repository: dataform.Repository = None,
-        repository_id: str = None,
+        parent: Optional[str] = None,
+        repository: Optional[dataform.Repository] = None,
+        repository_id: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> dataform.Repository:
         r"""Creates a new Repository in a given project and
@@ -465,7 +475,7 @@ class DataformAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.dataform_v1beta1.types.CreateRepositoryRequest, dict]):
+            request (Optional[Union[google.cloud.dataform_v1beta1.types.CreateRepositoryRequest, dict]]):
                 The request object. `CreateRepository` request message.
             parent (:class:`str`):
                 Required. The location in which to create the
@@ -547,12 +557,12 @@ class DataformAsyncClient:
 
     async def update_repository(
         self,
-        request: Union[dataform.UpdateRepositoryRequest, dict] = None,
+        request: Optional[Union[dataform.UpdateRepositoryRequest, dict]] = None,
         *,
-        repository: dataform.Repository = None,
-        update_mask: field_mask_pb2.FieldMask = None,
+        repository: Optional[dataform.Repository] = None,
+        update_mask: Optional[field_mask_pb2.FieldMask] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> dataform.Repository:
         r"""Updates a single Repository.
@@ -583,7 +593,7 @@ class DataformAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.dataform_v1beta1.types.UpdateRepositoryRequest, dict]):
+            request (Optional[Union[google.cloud.dataform_v1beta1.types.UpdateRepositoryRequest, dict]]):
                 The request object. `UpdateRepository` request message.
             repository (:class:`google.cloud.dataform_v1beta1.types.Repository`):
                 Required. The repository to update.
@@ -656,11 +666,11 @@ class DataformAsyncClient:
 
     async def delete_repository(
         self,
-        request: Union[dataform.DeleteRepositoryRequest, dict] = None,
+        request: Optional[Union[dataform.DeleteRepositoryRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> None:
         r"""Deletes a single Repository.
@@ -689,7 +699,7 @@ class DataformAsyncClient:
                 await client.delete_repository(request=request)
 
         Args:
-            request (Union[google.cloud.dataform_v1beta1.types.DeleteRepositoryRequest, dict]):
+            request (Optional[Union[google.cloud.dataform_v1beta1.types.DeleteRepositoryRequest, dict]]):
                 The request object. `DeleteRepository` request message.
             name (:class:`str`):
                 Required. The repository's name.
@@ -743,10 +753,10 @@ class DataformAsyncClient:
 
     async def fetch_remote_branches(
         self,
-        request: Union[dataform.FetchRemoteBranchesRequest, dict] = None,
+        request: Optional[Union[dataform.FetchRemoteBranchesRequest, dict]] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> dataform.FetchRemoteBranchesResponse:
         r"""Fetches a Repository's remote branches.
@@ -778,7 +788,7 @@ class DataformAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.dataform_v1beta1.types.FetchRemoteBranchesRequest, dict]):
+            request (Optional[Union[google.cloud.dataform_v1beta1.types.FetchRemoteBranchesRequest, dict]]):
                 The request object. `FetchRemoteBranches` request
                 message.
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
@@ -821,11 +831,11 @@ class DataformAsyncClient:
 
     async def list_workspaces(
         self,
-        request: Union[dataform.ListWorkspacesRequest, dict] = None,
+        request: Optional[Union[dataform.ListWorkspacesRequest, dict]] = None,
         *,
-        parent: str = None,
+        parent: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.ListWorkspacesAsyncPager:
         r"""Lists Workspaces in a given Repository.
@@ -858,7 +868,7 @@ class DataformAsyncClient:
                     print(response)
 
         Args:
-            request (Union[google.cloud.dataform_v1beta1.types.ListWorkspacesRequest, dict]):
+            request (Optional[Union[google.cloud.dataform_v1beta1.types.ListWorkspacesRequest, dict]]):
                 The request object. `ListWorkspaces` request message.
             parent (:class:`str`):
                 Required. The repository in which to list workspaces.
@@ -935,11 +945,11 @@ class DataformAsyncClient:
 
     async def get_workspace(
         self,
-        request: Union[dataform.GetWorkspaceRequest, dict] = None,
+        request: Optional[Union[dataform.GetWorkspaceRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> dataform.Workspace:
         r"""Fetches a single Workspace.
@@ -971,7 +981,7 @@ class DataformAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.dataform_v1beta1.types.GetWorkspaceRequest, dict]):
+            request (Optional[Union[google.cloud.dataform_v1beta1.types.GetWorkspaceRequest, dict]]):
                 The request object. `GetWorkspace` request message.
             name (:class:`str`):
                 Required. The workspace's name.
@@ -1032,13 +1042,13 @@ class DataformAsyncClient:
 
     async def create_workspace(
         self,
-        request: Union[dataform.CreateWorkspaceRequest, dict] = None,
+        request: Optional[Union[dataform.CreateWorkspaceRequest, dict]] = None,
         *,
-        parent: str = None,
-        workspace: dataform.Workspace = None,
-        workspace_id: str = None,
+        parent: Optional[str] = None,
+        workspace: Optional[dataform.Workspace] = None,
+        workspace_id: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> dataform.Workspace:
         r"""Creates a new Workspace in a given Repository.
@@ -1071,7 +1081,7 @@ class DataformAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.dataform_v1beta1.types.CreateWorkspaceRequest, dict]):
+            request (Optional[Union[google.cloud.dataform_v1beta1.types.CreateWorkspaceRequest, dict]]):
                 The request object. `CreateWorkspace` request message.
             parent (:class:`str`):
                 Required. The repository in which to create the
@@ -1153,11 +1163,11 @@ class DataformAsyncClient:
 
     async def delete_workspace(
         self,
-        request: Union[dataform.DeleteWorkspaceRequest, dict] = None,
+        request: Optional[Union[dataform.DeleteWorkspaceRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> None:
         r"""Deletes a single Workspace.
@@ -1186,7 +1196,7 @@ class DataformAsyncClient:
                 await client.delete_workspace(request=request)
 
         Args:
-            request (Union[google.cloud.dataform_v1beta1.types.DeleteWorkspaceRequest, dict]):
+            request (Optional[Union[google.cloud.dataform_v1beta1.types.DeleteWorkspaceRequest, dict]]):
                 The request object. `DeleteWorkspace` request message.
             name (:class:`str`):
                 Required. The workspace resource's
@@ -1242,10 +1252,10 @@ class DataformAsyncClient:
 
     async def install_npm_packages(
         self,
-        request: Union[dataform.InstallNpmPackagesRequest, dict] = None,
+        request: Optional[Union[dataform.InstallNpmPackagesRequest, dict]] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> dataform.InstallNpmPackagesResponse:
         r"""Installs dependency NPM packages (inside a
@@ -1278,7 +1288,7 @@ class DataformAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.dataform_v1beta1.types.InstallNpmPackagesRequest, dict]):
+            request (Optional[Union[google.cloud.dataform_v1beta1.types.InstallNpmPackagesRequest, dict]]):
                 The request object. `InstallNpmPackages` request
                 message.
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
@@ -1323,10 +1333,10 @@ class DataformAsyncClient:
 
     async def pull_git_commits(
         self,
-        request: Union[dataform.PullGitCommitsRequest, dict] = None,
+        request: Optional[Union[dataform.PullGitCommitsRequest, dict]] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> None:
         r"""Pulls Git commits from the Repository's remote into a
@@ -1361,7 +1371,7 @@ class DataformAsyncClient:
                 await client.pull_git_commits(request=request)
 
         Args:
-            request (Union[google.cloud.dataform_v1beta1.types.PullGitCommitsRequest, dict]):
+            request (Optional[Union[google.cloud.dataform_v1beta1.types.PullGitCommitsRequest, dict]]):
                 The request object. `PullGitCommits` request message.
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
@@ -1396,10 +1406,10 @@ class DataformAsyncClient:
 
     async def push_git_commits(
         self,
-        request: Union[dataform.PushGitCommitsRequest, dict] = None,
+        request: Optional[Union[dataform.PushGitCommitsRequest, dict]] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> None:
         r"""Pushes Git commits from a Workspace to the
@@ -1429,7 +1439,7 @@ class DataformAsyncClient:
                 await client.push_git_commits(request=request)
 
         Args:
-            request (Union[google.cloud.dataform_v1beta1.types.PushGitCommitsRequest, dict]):
+            request (Optional[Union[google.cloud.dataform_v1beta1.types.PushGitCommitsRequest, dict]]):
                 The request object. `PushGitCommits` request message.
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
@@ -1464,10 +1474,10 @@ class DataformAsyncClient:
 
     async def fetch_file_git_statuses(
         self,
-        request: Union[dataform.FetchFileGitStatusesRequest, dict] = None,
+        request: Optional[Union[dataform.FetchFileGitStatusesRequest, dict]] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> dataform.FetchFileGitStatusesResponse:
         r"""Fetches Git statuses for the files in a Workspace.
@@ -1499,7 +1509,7 @@ class DataformAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.dataform_v1beta1.types.FetchFileGitStatusesRequest, dict]):
+            request (Optional[Union[google.cloud.dataform_v1beta1.types.FetchFileGitStatusesRequest, dict]]):
                 The request object. `FetchFileGitStatuses` request
                 message.
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
@@ -1542,10 +1552,10 @@ class DataformAsyncClient:
 
     async def fetch_git_ahead_behind(
         self,
-        request: Union[dataform.FetchGitAheadBehindRequest, dict] = None,
+        request: Optional[Union[dataform.FetchGitAheadBehindRequest, dict]] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> dataform.FetchGitAheadBehindResponse:
         r"""Fetches Git ahead/behind against a remote branch.
@@ -1577,7 +1587,7 @@ class DataformAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.dataform_v1beta1.types.FetchGitAheadBehindRequest, dict]):
+            request (Optional[Union[google.cloud.dataform_v1beta1.types.FetchGitAheadBehindRequest, dict]]):
                 The request object. `FetchGitAheadBehind` request
                 message.
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
@@ -1620,10 +1630,10 @@ class DataformAsyncClient:
 
     async def commit_workspace_changes(
         self,
-        request: Union[dataform.CommitWorkspaceChangesRequest, dict] = None,
+        request: Optional[Union[dataform.CommitWorkspaceChangesRequest, dict]] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> None:
         r"""Applies a Git commit for uncommitted files in a
@@ -1658,7 +1668,7 @@ class DataformAsyncClient:
                 await client.commit_workspace_changes(request=request)
 
         Args:
-            request (Union[google.cloud.dataform_v1beta1.types.CommitWorkspaceChangesRequest, dict]):
+            request (Optional[Union[google.cloud.dataform_v1beta1.types.CommitWorkspaceChangesRequest, dict]]):
                 The request object. `CommitWorkspaceChanges` request
                 message.
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
@@ -1694,10 +1704,10 @@ class DataformAsyncClient:
 
     async def reset_workspace_changes(
         self,
-        request: Union[dataform.ResetWorkspaceChangesRequest, dict] = None,
+        request: Optional[Union[dataform.ResetWorkspaceChangesRequest, dict]] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> None:
         r"""Performs a Git reset for uncommitted files in a
@@ -1727,7 +1737,7 @@ class DataformAsyncClient:
                 await client.reset_workspace_changes(request=request)
 
         Args:
-            request (Union[google.cloud.dataform_v1beta1.types.ResetWorkspaceChangesRequest, dict]):
+            request (Optional[Union[google.cloud.dataform_v1beta1.types.ResetWorkspaceChangesRequest, dict]]):
                 The request object. `ResetWorkspaceChanges` request
                 message.
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
@@ -1763,10 +1773,10 @@ class DataformAsyncClient:
 
     async def fetch_file_diff(
         self,
-        request: Union[dataform.FetchFileDiffRequest, dict] = None,
+        request: Optional[Union[dataform.FetchFileDiffRequest, dict]] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> dataform.FetchFileDiffResponse:
         r"""Fetches Git diff for an uncommitted file in a
@@ -1800,7 +1810,7 @@ class DataformAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.dataform_v1beta1.types.FetchFileDiffRequest, dict]):
+            request (Optional[Union[google.cloud.dataform_v1beta1.types.FetchFileDiffRequest, dict]]):
                 The request object. `FetchFileDiff` request message.
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
@@ -1844,10 +1854,10 @@ class DataformAsyncClient:
 
     async def query_directory_contents(
         self,
-        request: Union[dataform.QueryDirectoryContentsRequest, dict] = None,
+        request: Optional[Union[dataform.QueryDirectoryContentsRequest, dict]] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.QueryDirectoryContentsAsyncPager:
         r"""Returns the contents of a given Workspace directory.
@@ -1880,7 +1890,7 @@ class DataformAsyncClient:
                     print(response)
 
         Args:
-            request (Union[google.cloud.dataform_v1beta1.types.QueryDirectoryContentsRequest, dict]):
+            request (Optional[Union[google.cloud.dataform_v1beta1.types.QueryDirectoryContentsRequest, dict]]):
                 The request object. `QueryDirectoryContents` request
                 message.
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
@@ -1938,10 +1948,10 @@ class DataformAsyncClient:
 
     async def make_directory(
         self,
-        request: Union[dataform.MakeDirectoryRequest, dict] = None,
+        request: Optional[Union[dataform.MakeDirectoryRequest, dict]] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> dataform.MakeDirectoryResponse:
         r"""Creates a directory inside a Workspace.
@@ -1974,7 +1984,7 @@ class DataformAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.dataform_v1beta1.types.MakeDirectoryRequest, dict]):
+            request (Optional[Union[google.cloud.dataform_v1beta1.types.MakeDirectoryRequest, dict]]):
                 The request object. `MakeDirectory` request message.
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
@@ -2018,10 +2028,10 @@ class DataformAsyncClient:
 
     async def remove_directory(
         self,
-        request: Union[dataform.RemoveDirectoryRequest, dict] = None,
+        request: Optional[Union[dataform.RemoveDirectoryRequest, dict]] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> None:
         r"""Deletes a directory (inside a Workspace) and all of
@@ -2052,7 +2062,7 @@ class DataformAsyncClient:
                 await client.remove_directory(request=request)
 
         Args:
-            request (Union[google.cloud.dataform_v1beta1.types.RemoveDirectoryRequest, dict]):
+            request (Optional[Union[google.cloud.dataform_v1beta1.types.RemoveDirectoryRequest, dict]]):
                 The request object. `RemoveDirectory` request message.
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
@@ -2089,10 +2099,10 @@ class DataformAsyncClient:
 
     async def move_directory(
         self,
-        request: Union[dataform.MoveDirectoryRequest, dict] = None,
+        request: Optional[Union[dataform.MoveDirectoryRequest, dict]] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> dataform.MoveDirectoryResponse:
         r"""Moves a directory (inside a Workspace), and all of
@@ -2127,7 +2137,7 @@ class DataformAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.dataform_v1beta1.types.MoveDirectoryRequest, dict]):
+            request (Optional[Union[google.cloud.dataform_v1beta1.types.MoveDirectoryRequest, dict]]):
                 The request object. `MoveDirectory` request message.
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
@@ -2171,10 +2181,10 @@ class DataformAsyncClient:
 
     async def read_file(
         self,
-        request: Union[dataform.ReadFileRequest, dict] = None,
+        request: Optional[Union[dataform.ReadFileRequest, dict]] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> dataform.ReadFileResponse:
         r"""Returns the contents of a file (inside a Workspace).
@@ -2207,7 +2217,7 @@ class DataformAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.dataform_v1beta1.types.ReadFileRequest, dict]):
+            request (Optional[Union[google.cloud.dataform_v1beta1.types.ReadFileRequest, dict]]):
                 The request object. `ReadFile` request message.
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
@@ -2251,10 +2261,10 @@ class DataformAsyncClient:
 
     async def remove_file(
         self,
-        request: Union[dataform.RemoveFileRequest, dict] = None,
+        request: Optional[Union[dataform.RemoveFileRequest, dict]] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> None:
         r"""Deletes a file (inside a Workspace).
@@ -2284,7 +2294,7 @@ class DataformAsyncClient:
                 await client.remove_file(request=request)
 
         Args:
-            request (Union[google.cloud.dataform_v1beta1.types.RemoveFileRequest, dict]):
+            request (Optional[Union[google.cloud.dataform_v1beta1.types.RemoveFileRequest, dict]]):
                 The request object. `RemoveFile` request message.
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
@@ -2321,10 +2331,10 @@ class DataformAsyncClient:
 
     async def move_file(
         self,
-        request: Union[dataform.MoveFileRequest, dict] = None,
+        request: Optional[Union[dataform.MoveFileRequest, dict]] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> dataform.MoveFileResponse:
         r"""Moves a file (inside a Workspace) to a new location.
@@ -2358,7 +2368,7 @@ class DataformAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.dataform_v1beta1.types.MoveFileRequest, dict]):
+            request (Optional[Union[google.cloud.dataform_v1beta1.types.MoveFileRequest, dict]]):
                 The request object. `MoveFile` request message.
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
@@ -2402,10 +2412,10 @@ class DataformAsyncClient:
 
     async def write_file(
         self,
-        request: Union[dataform.WriteFileRequest, dict] = None,
+        request: Optional[Union[dataform.WriteFileRequest, dict]] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> dataform.WriteFileResponse:
         r"""Writes to a file (inside a Workspace).
@@ -2439,7 +2449,7 @@ class DataformAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.dataform_v1beta1.types.WriteFileRequest, dict]):
+            request (Optional[Union[google.cloud.dataform_v1beta1.types.WriteFileRequest, dict]]):
                 The request object. `WriteFile` request message.
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
@@ -2483,11 +2493,11 @@ class DataformAsyncClient:
 
     async def list_compilation_results(
         self,
-        request: Union[dataform.ListCompilationResultsRequest, dict] = None,
+        request: Optional[Union[dataform.ListCompilationResultsRequest, dict]] = None,
         *,
-        parent: str = None,
+        parent: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.ListCompilationResultsAsyncPager:
         r"""Lists CompilationResults in a given Repository.
@@ -2520,7 +2530,7 @@ class DataformAsyncClient:
                     print(response)
 
         Args:
-            request (Union[google.cloud.dataform_v1beta1.types.ListCompilationResultsRequest, dict]):
+            request (Optional[Union[google.cloud.dataform_v1beta1.types.ListCompilationResultsRequest, dict]]):
                 The request object. `ListCompilationResults` request
                 message.
             parent (:class:`str`):
@@ -2598,11 +2608,11 @@ class DataformAsyncClient:
 
     async def get_compilation_result(
         self,
-        request: Union[dataform.GetCompilationResultRequest, dict] = None,
+        request: Optional[Union[dataform.GetCompilationResultRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> dataform.CompilationResult:
         r"""Fetches a single CompilationResult.
@@ -2634,7 +2644,7 @@ class DataformAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.dataform_v1beta1.types.GetCompilationResultRequest, dict]):
+            request (Optional[Union[google.cloud.dataform_v1beta1.types.GetCompilationResultRequest, dict]]):
                 The request object. `GetCompilationResult` request
                 message.
             name (:class:`str`):
@@ -2700,12 +2710,12 @@ class DataformAsyncClient:
 
     async def create_compilation_result(
         self,
-        request: Union[dataform.CreateCompilationResultRequest, dict] = None,
+        request: Optional[Union[dataform.CreateCompilationResultRequest, dict]] = None,
         *,
-        parent: str = None,
-        compilation_result: dataform.CompilationResult = None,
+        parent: Optional[str] = None,
+        compilation_result: Optional[dataform.CompilationResult] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> dataform.CompilationResult:
         r"""Creates a new CompilationResult in a given project
@@ -2742,7 +2752,7 @@ class DataformAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.dataform_v1beta1.types.CreateCompilationResultRequest, dict]):
+            request (Optional[Union[google.cloud.dataform_v1beta1.types.CreateCompilationResultRequest, dict]]):
                 The request object. `CreateCompilationResult` request
                 message.
             parent (:class:`str`):
@@ -2818,10 +2828,12 @@ class DataformAsyncClient:
 
     async def query_compilation_result_actions(
         self,
-        request: Union[dataform.QueryCompilationResultActionsRequest, dict] = None,
+        request: Optional[
+            Union[dataform.QueryCompilationResultActionsRequest, dict]
+        ] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.QueryCompilationResultActionsAsyncPager:
         r"""Returns CompilationResultActions in a given
@@ -2855,7 +2867,7 @@ class DataformAsyncClient:
                     print(response)
 
         Args:
-            request (Union[google.cloud.dataform_v1beta1.types.QueryCompilationResultActionsRequest, dict]):
+            request (Optional[Union[google.cloud.dataform_v1beta1.types.QueryCompilationResultActionsRequest, dict]]):
                 The request object. `QueryCompilationResultActions`
                 request message.
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
@@ -2911,11 +2923,11 @@ class DataformAsyncClient:
 
     async def list_workflow_invocations(
         self,
-        request: Union[dataform.ListWorkflowInvocationsRequest, dict] = None,
+        request: Optional[Union[dataform.ListWorkflowInvocationsRequest, dict]] = None,
         *,
-        parent: str = None,
+        parent: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.ListWorkflowInvocationsAsyncPager:
         r"""Lists WorkflowInvocations in a given Repository.
@@ -2948,7 +2960,7 @@ class DataformAsyncClient:
                     print(response)
 
         Args:
-            request (Union[google.cloud.dataform_v1beta1.types.ListWorkflowInvocationsRequest, dict]):
+            request (Optional[Union[google.cloud.dataform_v1beta1.types.ListWorkflowInvocationsRequest, dict]]):
                 The request object. `ListWorkflowInvocations` request
                 message.
             parent (:class:`str`):
@@ -3026,11 +3038,11 @@ class DataformAsyncClient:
 
     async def get_workflow_invocation(
         self,
-        request: Union[dataform.GetWorkflowInvocationRequest, dict] = None,
+        request: Optional[Union[dataform.GetWorkflowInvocationRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> dataform.WorkflowInvocation:
         r"""Fetches a single WorkflowInvocation.
@@ -3062,7 +3074,7 @@ class DataformAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.dataform_v1beta1.types.GetWorkflowInvocationRequest, dict]):
+            request (Optional[Union[google.cloud.dataform_v1beta1.types.GetWorkflowInvocationRequest, dict]]):
                 The request object. `GetWorkflowInvocation` request
                 message.
             name (:class:`str`):
@@ -3128,12 +3140,12 @@ class DataformAsyncClient:
 
     async def create_workflow_invocation(
         self,
-        request: Union[dataform.CreateWorkflowInvocationRequest, dict] = None,
+        request: Optional[Union[dataform.CreateWorkflowInvocationRequest, dict]] = None,
         *,
-        parent: str = None,
-        workflow_invocation: dataform.WorkflowInvocation = None,
+        parent: Optional[str] = None,
+        workflow_invocation: Optional[dataform.WorkflowInvocation] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> dataform.WorkflowInvocation:
         r"""Creates a new WorkflowInvocation in a given
@@ -3166,7 +3178,7 @@ class DataformAsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.dataform_v1beta1.types.CreateWorkflowInvocationRequest, dict]):
+            request (Optional[Union[google.cloud.dataform_v1beta1.types.CreateWorkflowInvocationRequest, dict]]):
                 The request object. `CreateWorkflowInvocation` request
                 message.
             parent (:class:`str`):
@@ -3242,11 +3254,11 @@ class DataformAsyncClient:
 
     async def delete_workflow_invocation(
         self,
-        request: Union[dataform.DeleteWorkflowInvocationRequest, dict] = None,
+        request: Optional[Union[dataform.DeleteWorkflowInvocationRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> None:
         r"""Deletes a single WorkflowInvocation.
@@ -3275,7 +3287,7 @@ class DataformAsyncClient:
                 await client.delete_workflow_invocation(request=request)
 
         Args:
-            request (Union[google.cloud.dataform_v1beta1.types.DeleteWorkflowInvocationRequest, dict]):
+            request (Optional[Union[google.cloud.dataform_v1beta1.types.DeleteWorkflowInvocationRequest, dict]]):
                 The request object. `DeleteWorkflowInvocation` request
                 message.
             name (:class:`str`):
@@ -3332,10 +3344,10 @@ class DataformAsyncClient:
 
     async def cancel_workflow_invocation(
         self,
-        request: Union[dataform.CancelWorkflowInvocationRequest, dict] = None,
+        request: Optional[Union[dataform.CancelWorkflowInvocationRequest, dict]] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> None:
         r"""Requests cancellation of a running
@@ -3365,7 +3377,7 @@ class DataformAsyncClient:
                 await client.cancel_workflow_invocation(request=request)
 
         Args:
-            request (Union[google.cloud.dataform_v1beta1.types.CancelWorkflowInvocationRequest, dict]):
+            request (Optional[Union[google.cloud.dataform_v1beta1.types.CancelWorkflowInvocationRequest, dict]]):
                 The request object. `CancelWorkflowInvocation` request
                 message.
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
@@ -3401,10 +3413,12 @@ class DataformAsyncClient:
 
     async def query_workflow_invocation_actions(
         self,
-        request: Union[dataform.QueryWorkflowInvocationActionsRequest, dict] = None,
+        request: Optional[
+            Union[dataform.QueryWorkflowInvocationActionsRequest, dict]
+        ] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.QueryWorkflowInvocationActionsAsyncPager:
         r"""Returns WorkflowInvocationActions in a given
@@ -3438,7 +3452,7 @@ class DataformAsyncClient:
                     print(response)
 
         Args:
-            request (Union[google.cloud.dataform_v1beta1.types.QueryWorkflowInvocationActionsRequest, dict]):
+            request (Optional[Union[google.cloud.dataform_v1beta1.types.QueryWorkflowInvocationActionsRequest, dict]]):
                 The request object. `QueryWorkflowInvocationActions`
                 request message.
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
@@ -3494,10 +3508,10 @@ class DataformAsyncClient:
 
     async def get_location(
         self,
-        request: locations_pb2.GetLocationRequest = None,
+        request: Optional[locations_pb2.GetLocationRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> locations_pb2.Location:
         r"""Gets information about a location.
@@ -3548,10 +3562,10 @@ class DataformAsyncClient:
 
     async def list_locations(
         self,
-        request: locations_pb2.ListLocationsRequest = None,
+        request: Optional[locations_pb2.ListLocationsRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> locations_pb2.ListLocationsResponse:
         r"""Lists information about the supported locations for this service.

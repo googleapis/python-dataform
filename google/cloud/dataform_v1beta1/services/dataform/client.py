@@ -16,7 +16,18 @@
 from collections import OrderedDict
 import os
 import re
-from typing import Dict, Mapping, Optional, Sequence, Tuple, Type, Union, cast
+from typing import (
+    Dict,
+    Mapping,
+    MutableMapping,
+    MutableSequence,
+    Optional,
+    Sequence,
+    Tuple,
+    Type,
+    Union,
+    cast,
+)
 import pkg_resources
 
 from google.api_core import client_options as client_options_lib
@@ -60,7 +71,7 @@ class DataformClientMeta(type):
 
     def get_transport_class(
         cls,
-        label: str = None,
+        label: Optional[str] = None,
     ) -> Type[DataformTransport]:
         """Returns an appropriate transport class.
 
@@ -433,7 +444,7 @@ class DataformClient(metaclass=DataformClientMeta):
         self,
         *,
         credentials: Optional[ga_credentials.Credentials] = None,
-        transport: Union[str, DataformTransport, None] = None,
+        transport: Optional[Union[str, DataformTransport]] = None,
         client_options: Optional[Union[client_options_lib.ClientOptions, dict]] = None,
         client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
     ) -> None:
@@ -531,11 +542,11 @@ class DataformClient(metaclass=DataformClientMeta):
 
     def list_repositories(
         self,
-        request: Union[dataform.ListRepositoriesRequest, dict] = None,
+        request: Optional[Union[dataform.ListRepositoriesRequest, dict]] = None,
         *,
-        parent: str = None,
+        parent: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.ListRepositoriesPager:
         r"""Lists Repositories in a given project and location.
@@ -644,11 +655,11 @@ class DataformClient(metaclass=DataformClientMeta):
 
     def get_repository(
         self,
-        request: Union[dataform.GetRepositoryRequest, dict] = None,
+        request: Optional[Union[dataform.GetRepositoryRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> dataform.Repository:
         r"""Fetches a single Repository.
@@ -741,13 +752,13 @@ class DataformClient(metaclass=DataformClientMeta):
 
     def create_repository(
         self,
-        request: Union[dataform.CreateRepositoryRequest, dict] = None,
+        request: Optional[Union[dataform.CreateRepositoryRequest, dict]] = None,
         *,
-        parent: str = None,
-        repository: dataform.Repository = None,
-        repository_id: str = None,
+        parent: Optional[str] = None,
+        repository: Optional[dataform.Repository] = None,
+        repository_id: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> dataform.Repository:
         r"""Creates a new Repository in a given project and
@@ -863,12 +874,12 @@ class DataformClient(metaclass=DataformClientMeta):
 
     def update_repository(
         self,
-        request: Union[dataform.UpdateRepositoryRequest, dict] = None,
+        request: Optional[Union[dataform.UpdateRepositoryRequest, dict]] = None,
         *,
-        repository: dataform.Repository = None,
-        update_mask: field_mask_pb2.FieldMask = None,
+        repository: Optional[dataform.Repository] = None,
+        update_mask: Optional[field_mask_pb2.FieldMask] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> dataform.Repository:
         r"""Updates a single Repository.
@@ -972,11 +983,11 @@ class DataformClient(metaclass=DataformClientMeta):
 
     def delete_repository(
         self,
-        request: Union[dataform.DeleteRepositoryRequest, dict] = None,
+        request: Optional[Union[dataform.DeleteRepositoryRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> None:
         r"""Deletes a single Repository.
@@ -1059,10 +1070,10 @@ class DataformClient(metaclass=DataformClientMeta):
 
     def fetch_remote_branches(
         self,
-        request: Union[dataform.FetchRemoteBranchesRequest, dict] = None,
+        request: Optional[Union[dataform.FetchRemoteBranchesRequest, dict]] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> dataform.FetchRemoteBranchesResponse:
         r"""Fetches a Repository's remote branches.
@@ -1138,11 +1149,11 @@ class DataformClient(metaclass=DataformClientMeta):
 
     def list_workspaces(
         self,
-        request: Union[dataform.ListWorkspacesRequest, dict] = None,
+        request: Optional[Union[dataform.ListWorkspacesRequest, dict]] = None,
         *,
-        parent: str = None,
+        parent: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.ListWorkspacesPager:
         r"""Lists Workspaces in a given Repository.
@@ -1252,11 +1263,11 @@ class DataformClient(metaclass=DataformClientMeta):
 
     def get_workspace(
         self,
-        request: Union[dataform.GetWorkspaceRequest, dict] = None,
+        request: Optional[Union[dataform.GetWorkspaceRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> dataform.Workspace:
         r"""Fetches a single Workspace.
@@ -1349,13 +1360,13 @@ class DataformClient(metaclass=DataformClientMeta):
 
     def create_workspace(
         self,
-        request: Union[dataform.CreateWorkspaceRequest, dict] = None,
+        request: Optional[Union[dataform.CreateWorkspaceRequest, dict]] = None,
         *,
-        parent: str = None,
-        workspace: dataform.Workspace = None,
-        workspace_id: str = None,
+        parent: Optional[str] = None,
+        workspace: Optional[dataform.Workspace] = None,
+        workspace_id: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> dataform.Workspace:
         r"""Creates a new Workspace in a given Repository.
@@ -1470,11 +1481,11 @@ class DataformClient(metaclass=DataformClientMeta):
 
     def delete_workspace(
         self,
-        request: Union[dataform.DeleteWorkspaceRequest, dict] = None,
+        request: Optional[Union[dataform.DeleteWorkspaceRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> None:
         r"""Deletes a single Workspace.
@@ -1559,10 +1570,10 @@ class DataformClient(metaclass=DataformClientMeta):
 
     def install_npm_packages(
         self,
-        request: Union[dataform.InstallNpmPackagesRequest, dict] = None,
+        request: Optional[Union[dataform.InstallNpmPackagesRequest, dict]] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> dataform.InstallNpmPackagesResponse:
         r"""Installs dependency NPM packages (inside a
@@ -1641,10 +1652,10 @@ class DataformClient(metaclass=DataformClientMeta):
 
     def pull_git_commits(
         self,
-        request: Union[dataform.PullGitCommitsRequest, dict] = None,
+        request: Optional[Union[dataform.PullGitCommitsRequest, dict]] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> None:
         r"""Pulls Git commits from the Repository's remote into a
@@ -1715,10 +1726,10 @@ class DataformClient(metaclass=DataformClientMeta):
 
     def push_git_commits(
         self,
-        request: Union[dataform.PushGitCommitsRequest, dict] = None,
+        request: Optional[Union[dataform.PushGitCommitsRequest, dict]] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> None:
         r"""Pushes Git commits from a Workspace to the
@@ -1784,10 +1795,10 @@ class DataformClient(metaclass=DataformClientMeta):
 
     def fetch_file_git_statuses(
         self,
-        request: Union[dataform.FetchFileGitStatusesRequest, dict] = None,
+        request: Optional[Union[dataform.FetchFileGitStatusesRequest, dict]] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> dataform.FetchFileGitStatusesResponse:
         r"""Fetches Git statuses for the files in a Workspace.
@@ -1863,10 +1874,10 @@ class DataformClient(metaclass=DataformClientMeta):
 
     def fetch_git_ahead_behind(
         self,
-        request: Union[dataform.FetchGitAheadBehindRequest, dict] = None,
+        request: Optional[Union[dataform.FetchGitAheadBehindRequest, dict]] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> dataform.FetchGitAheadBehindResponse:
         r"""Fetches Git ahead/behind against a remote branch.
@@ -1942,10 +1953,10 @@ class DataformClient(metaclass=DataformClientMeta):
 
     def commit_workspace_changes(
         self,
-        request: Union[dataform.CommitWorkspaceChangesRequest, dict] = None,
+        request: Optional[Union[dataform.CommitWorkspaceChangesRequest, dict]] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> None:
         r"""Applies a Git commit for uncommitted files in a
@@ -2017,10 +2028,10 @@ class DataformClient(metaclass=DataformClientMeta):
 
     def reset_workspace_changes(
         self,
-        request: Union[dataform.ResetWorkspaceChangesRequest, dict] = None,
+        request: Optional[Union[dataform.ResetWorkspaceChangesRequest, dict]] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> None:
         r"""Performs a Git reset for uncommitted files in a
@@ -2087,10 +2098,10 @@ class DataformClient(metaclass=DataformClientMeta):
 
     def fetch_file_diff(
         self,
-        request: Union[dataform.FetchFileDiffRequest, dict] = None,
+        request: Optional[Union[dataform.FetchFileDiffRequest, dict]] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> dataform.FetchFileDiffResponse:
         r"""Fetches Git diff for an uncommitted file in a
@@ -2169,10 +2180,10 @@ class DataformClient(metaclass=DataformClientMeta):
 
     def query_directory_contents(
         self,
-        request: Union[dataform.QueryDirectoryContentsRequest, dict] = None,
+        request: Optional[Union[dataform.QueryDirectoryContentsRequest, dict]] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.QueryDirectoryContentsPager:
         r"""Returns the contents of a given Workspace directory.
@@ -2264,10 +2275,10 @@ class DataformClient(metaclass=DataformClientMeta):
 
     def make_directory(
         self,
-        request: Union[dataform.MakeDirectoryRequest, dict] = None,
+        request: Optional[Union[dataform.MakeDirectoryRequest, dict]] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> dataform.MakeDirectoryResponse:
         r"""Creates a directory inside a Workspace.
@@ -2345,10 +2356,10 @@ class DataformClient(metaclass=DataformClientMeta):
 
     def remove_directory(
         self,
-        request: Union[dataform.RemoveDirectoryRequest, dict] = None,
+        request: Optional[Union[dataform.RemoveDirectoryRequest, dict]] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> None:
         r"""Deletes a directory (inside a Workspace) and all of
@@ -2417,10 +2428,10 @@ class DataformClient(metaclass=DataformClientMeta):
 
     def move_directory(
         self,
-        request: Union[dataform.MoveDirectoryRequest, dict] = None,
+        request: Optional[Union[dataform.MoveDirectoryRequest, dict]] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> dataform.MoveDirectoryResponse:
         r"""Moves a directory (inside a Workspace), and all of
@@ -2500,10 +2511,10 @@ class DataformClient(metaclass=DataformClientMeta):
 
     def read_file(
         self,
-        request: Union[dataform.ReadFileRequest, dict] = None,
+        request: Optional[Union[dataform.ReadFileRequest, dict]] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> dataform.ReadFileResponse:
         r"""Returns the contents of a file (inside a Workspace).
@@ -2581,10 +2592,10 @@ class DataformClient(metaclass=DataformClientMeta):
 
     def remove_file(
         self,
-        request: Union[dataform.RemoveFileRequest, dict] = None,
+        request: Optional[Union[dataform.RemoveFileRequest, dict]] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> None:
         r"""Deletes a file (inside a Workspace).
@@ -2652,10 +2663,10 @@ class DataformClient(metaclass=DataformClientMeta):
 
     def move_file(
         self,
-        request: Union[dataform.MoveFileRequest, dict] = None,
+        request: Optional[Union[dataform.MoveFileRequest, dict]] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> dataform.MoveFileResponse:
         r"""Moves a file (inside a Workspace) to a new location.
@@ -2734,10 +2745,10 @@ class DataformClient(metaclass=DataformClientMeta):
 
     def write_file(
         self,
-        request: Union[dataform.WriteFileRequest, dict] = None,
+        request: Optional[Union[dataform.WriteFileRequest, dict]] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> dataform.WriteFileResponse:
         r"""Writes to a file (inside a Workspace).
@@ -2816,11 +2827,11 @@ class DataformClient(metaclass=DataformClientMeta):
 
     def list_compilation_results(
         self,
-        request: Union[dataform.ListCompilationResultsRequest, dict] = None,
+        request: Optional[Union[dataform.ListCompilationResultsRequest, dict]] = None,
         *,
-        parent: str = None,
+        parent: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.ListCompilationResultsPager:
         r"""Lists CompilationResults in a given Repository.
@@ -2931,11 +2942,11 @@ class DataformClient(metaclass=DataformClientMeta):
 
     def get_compilation_result(
         self,
-        request: Union[dataform.GetCompilationResultRequest, dict] = None,
+        request: Optional[Union[dataform.GetCompilationResultRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> dataform.CompilationResult:
         r"""Fetches a single CompilationResult.
@@ -3033,12 +3044,12 @@ class DataformClient(metaclass=DataformClientMeta):
 
     def create_compilation_result(
         self,
-        request: Union[dataform.CreateCompilationResultRequest, dict] = None,
+        request: Optional[Union[dataform.CreateCompilationResultRequest, dict]] = None,
         *,
-        parent: str = None,
-        compilation_result: dataform.CompilationResult = None,
+        parent: Optional[str] = None,
+        compilation_result: Optional[dataform.CompilationResult] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> dataform.CompilationResult:
         r"""Creates a new CompilationResult in a given project
@@ -3153,10 +3164,12 @@ class DataformClient(metaclass=DataformClientMeta):
 
     def query_compilation_result_actions(
         self,
-        request: Union[dataform.QueryCompilationResultActionsRequest, dict] = None,
+        request: Optional[
+            Union[dataform.QueryCompilationResultActionsRequest, dict]
+        ] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.QueryCompilationResultActionsPager:
         r"""Returns CompilationResultActions in a given
@@ -3249,11 +3262,11 @@ class DataformClient(metaclass=DataformClientMeta):
 
     def list_workflow_invocations(
         self,
-        request: Union[dataform.ListWorkflowInvocationsRequest, dict] = None,
+        request: Optional[Union[dataform.ListWorkflowInvocationsRequest, dict]] = None,
         *,
-        parent: str = None,
+        parent: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.ListWorkflowInvocationsPager:
         r"""Lists WorkflowInvocations in a given Repository.
@@ -3366,11 +3379,11 @@ class DataformClient(metaclass=DataformClientMeta):
 
     def get_workflow_invocation(
         self,
-        request: Union[dataform.GetWorkflowInvocationRequest, dict] = None,
+        request: Optional[Union[dataform.GetWorkflowInvocationRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> dataform.WorkflowInvocation:
         r"""Fetches a single WorkflowInvocation.
@@ -3468,12 +3481,12 @@ class DataformClient(metaclass=DataformClientMeta):
 
     def create_workflow_invocation(
         self,
-        request: Union[dataform.CreateWorkflowInvocationRequest, dict] = None,
+        request: Optional[Union[dataform.CreateWorkflowInvocationRequest, dict]] = None,
         *,
-        parent: str = None,
-        workflow_invocation: dataform.WorkflowInvocation = None,
+        parent: Optional[str] = None,
+        workflow_invocation: Optional[dataform.WorkflowInvocation] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> dataform.WorkflowInvocation:
         r"""Creates a new WorkflowInvocation in a given
@@ -3584,11 +3597,11 @@ class DataformClient(metaclass=DataformClientMeta):
 
     def delete_workflow_invocation(
         self,
-        request: Union[dataform.DeleteWorkflowInvocationRequest, dict] = None,
+        request: Optional[Union[dataform.DeleteWorkflowInvocationRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> None:
         r"""Deletes a single WorkflowInvocation.
@@ -3676,10 +3689,10 @@ class DataformClient(metaclass=DataformClientMeta):
 
     def cancel_workflow_invocation(
         self,
-        request: Union[dataform.CancelWorkflowInvocationRequest, dict] = None,
+        request: Optional[Union[dataform.CancelWorkflowInvocationRequest, dict]] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> None:
         r"""Requests cancellation of a running
@@ -3748,10 +3761,12 @@ class DataformClient(metaclass=DataformClientMeta):
 
     def query_workflow_invocation_actions(
         self,
-        request: Union[dataform.QueryWorkflowInvocationActionsRequest, dict] = None,
+        request: Optional[
+            Union[dataform.QueryWorkflowInvocationActionsRequest, dict]
+        ] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.QueryWorkflowInvocationActionsPager:
         r"""Returns WorkflowInvocationActions in a given
@@ -3857,10 +3872,10 @@ class DataformClient(metaclass=DataformClientMeta):
 
     def get_location(
         self,
-        request: locations_pb2.GetLocationRequest = None,
+        request: Optional[locations_pb2.GetLocationRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> locations_pb2.Location:
         r"""Gets information about a location.
@@ -3911,10 +3926,10 @@ class DataformClient(metaclass=DataformClientMeta):
 
     def list_locations(
         self,
-        request: locations_pb2.ListLocationsRequest = None,
+        request: Optional[locations_pb2.ListLocationsRequest] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> locations_pb2.ListLocationsResponse:
         r"""Lists information about the supported locations for this service.
