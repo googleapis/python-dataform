@@ -13,8 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-from .client import DataformClient
 from .async_client import DataformAsyncClient
+from .client import DataformClient
 
 __all__ = (
     "DataformClient",
